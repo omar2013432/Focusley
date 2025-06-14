@@ -1,5 +1,13 @@
-For all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
+All task-related components must include:
+- a clear visual for type (timed ⏱️, flexible 🌀)
+- tappable status button (Start / Pause / Resume)
+- progress feedback (like time left or duration)
 
-By default, this template supports JSX syntax with Tailwind CSS classes, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them.
+Preferred design language:
+- Visual hierarchy like Notion
+- Interaction clarity like Linear
+- Animation rhythm like Things 3
 
-Use icons from lucide-react for logos.
+Mobile-first: the app will primarily be used on phones with future support for iOS widgets. Prioritize tap targets, scroll clarity, and readability.
+
+All AI-generated schedules should visually distinguish type and duration.
