@@ -1,5 +1,5 @@
 import React from 'react';
-import { Settings as SettingsIcon, RotateCcw, Clock, Zap } from 'lucide-react';
+import { RotateCcw, Clock, Zap } from 'lucide-react';
 import { Settings } from '../types';
 
 interface SettingsProps {

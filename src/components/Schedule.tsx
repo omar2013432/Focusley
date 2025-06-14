@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, CheckCircle2, Circle, Timer, Waves, Clock } from 'lucide-react';
+import { Calendar, CheckCircle2, Circle, Timer, Waves } from 'lucide-react';
 import { Task, Settings } from '../types';
 
 interface ScheduleProps {

@@ -56,12 +56,12 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
     const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toDateString();
 
     // Start counting from today or yesterday if we completed tasks
-    let startDate = dates.includes(today) ? today : 
-                   dates.includes(yesterday) ? yesterday : null;
+    const startDate = dates.includes(today) ? today :
+                     dates.includes(yesterday) ? yesterday : null;
 
     if (!startDate) return 0;
 
-    let currentDate = new Date(startDate);
+    const currentDate = new Date(startDate);
     
     while (true) {
       const dateStr = currentDate.toDateString();
