@@ -296,7 +296,7 @@ button:active:not(:disabled) {
 
 .progress-fill {
   @apply h-full rounded-full transition-all duration-500 ease-out;
-  @apply bg-gradient-to-r from-[#007BFF] to-[#0056b3];
+  @apply bg-gradient-to-r from-[#ff7e5f] to-[#feb47b];
 }
 
 /* Enhanced status indicators */

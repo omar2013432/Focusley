@@ -176,19 +176,20 @@ const Dashboard: React.FC<DashboardProps> = ({
                     type="text"
                     value={taskInput}
                     onChange={(e) => setTaskInput(e.target.value)}
-                    placeholder="e.g., Finish homework (45 minutes)"
-                    className="input-beautiful text-base pr-24 h-12 placeholder-gray-600"
+                    placeholder="Finish Homework..."
+                    className="input-beautiful text-base pr-16 h-12 placeholder-gray-600"
                     autoFocus
                   />
                   <button
                     type="submit"
                     disabled={!taskInput.trim()}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 transform px-4 py-2 h-10 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-lg hover:shadow-beautiful disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 transform p-2 h-10 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-lg hover:shadow-beautiful disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                   >
-                    Add Task
+                    <Plus size={20} />
                   </button>
                 </div>
                 <p className="text-xs text-gray-500">Press Enter to add</p>
+                <p className="text-xs text-gray-500">Tip: include the number of minutes in parentheses</p>
               </form>
             </div>
           </div>
