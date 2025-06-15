@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Home, Calendar, Flame, Settings, Plus } from 'lucide-react';
+import { Home, Calendar, Flame, Settings } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import Schedule from './components/Schedule';
 import Streaks from './components/Streaks';
@@ -215,7 +215,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-[#F4F6F8]">
       {/* Main Content */}
       <div className="pb-24">
         {renderContent()}
@@ -225,10 +225,10 @@ function App() {
       <nav className="nav-beautiful px-6 py-4 safe-area-pb">
         <div className="flex justify-around items-center max-w-md mx-auto">
           {[
-            { id: 'dashboard', icon: Home, label: 'Today', gradient: 'from-blue-500 to-blue-600' },
-            { id: 'schedule', icon: Calendar, label: 'Schedule', gradient: 'from-purple-500 to-purple-600' },
-            { id: 'streaks', icon: Flame, label: 'Progress', gradient: 'from-orange-500 to-red-500' },
-            { id: 'settings', icon: Settings, label: 'Settings', gradient: 'from-gray-500 to-gray-600' }
+            { id: 'dashboard', icon: Home, label: 'Today', gradient: 'from-[#007BFF] to-[#0056b3]' },
+            { id: 'schedule', icon: Calendar, label: 'Schedule', gradient: 'from-[#007BFF] to-[#0056b3]' },
+            { id: 'streaks', icon: Flame, label: 'Progress', gradient: 'from-[#007BFF] to-[#0056b3]' },
+            { id: 'settings', icon: Settings, label: 'Settings', gradient: 'from-[#007BFF] to-[#0056b3]' }
           ].map(({ id, icon: Icon, label, gradient }) => (
             <button
               key={id}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, CheckCircle2, Circle, Timer, Waves, Clock, Play, Pause, CalendarDays } from 'lucide-react';
+import { Calendar, CheckCircle2, Circle, Timer, Waves, Play, Pause, CalendarDays } from 'lucide-react';
 import { Task, Settings } from '../types';
 
 interface ScheduleProps {
@@ -78,13 +78,13 @@ const Schedule: React.FC<ScheduleProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-[#F4F6F8]">
       <div className="px-4 pt-8 pb-6">
         <div className="max-w-md mx-auto">
           {/* Beautiful Header */}
           <div className="mb-8 animate-fade-in">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl">
+              <div className="p-3 bg-gradient-to-r from-[#00C853] to-[#009624] rounded-lg">
                 <CalendarDays size={24} className="text-white" />
               </div>
               <div>
@@ -137,7 +137,7 @@ const Schedule: React.FC<ScheduleProps> = ({
                           .map((task, taskIndex) => (
                           <div
                             key={task.id}
-                            className={`rounded-2xl border transition-all duration-300 p-6 animate-slide-up ${getTaskStatusStyle(task)}`}
+                            className={`rounded-lg border transition-all duration-300 p-6 animate-slide-up ${getTaskStatusStyle(task)}`}
                             style={{ animationDelay: `${(dateIndex * 200) + (taskIndex * 100)}ms` }}
                           >
                             <div className="flex items-start space-x-4">
@@ -183,7 +183,7 @@ const Schedule: React.FC<ScheduleProps> = ({
                                       </button>
                                     ) : (
                                       <div className="flex items-center space-x-4">
-                                        <div className="flex items-center space-x-2 px-3 py-2 bg-blue-100 text-blue-700 rounded-xl font-semibold text-sm">
+                                        <div className="flex items-center space-x-2 px-3 py-2 bg-blue-100 text-blue-700 rounded-lg font-semibold text-sm">
                                           <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse-soft"></div>
                                           <span>Active Now</span>
                                         </div>
@@ -215,7 +215,7 @@ const Schedule: React.FC<ScheduleProps> = ({
                         {flexibleTasks.map((task, taskIndex) => (
                           <div
                             key={task.id}
-                            className={`rounded-2xl border transition-all duration-300 p-6 animate-slide-up ${getTaskStatusStyle(task)}`}
+                            className={`rounded-lg border transition-all duration-300 p-6 animate-slide-up ${getTaskStatusStyle(task)}`}
                             style={{ animationDelay: `${(dateIndex * 200) + (scheduledTasks.length * 100) + (taskIndex * 100)}ms` }}
                           >
                             <div className="flex items-start space-x-4">
@@ -261,7 +261,7 @@ const Schedule: React.FC<ScheduleProps> = ({
                                       </button>
                                     ) : (
                                       <div className="flex items-center space-x-4">
-                                        <div className="flex items-center space-x-2 px-3 py-2 bg-blue-100 text-blue-700 rounded-xl font-semibold text-sm">
+                                        <div className="flex items-center space-x-2 px-3 py-2 bg-blue-100 text-blue-700 rounded-lg font-semibold text-sm">
                                           <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse-soft"></div>
                                           <span>Active Now</span>
                                         </div>

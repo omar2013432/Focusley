@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flame, Target, TrendingUp, Award, Calendar, Trophy, Star, Zap } from 'lucide-react';
+import { Target, TrendingUp, Award, Calendar, Trophy, Star, Zap } from 'lucide-react';
 import { Task } from '../types';
 
 interface StreaksProps {
@@ -54,12 +54,12 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
     const today = new Date().toDateString();
     const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toDateString();
 
-    let startDate = dates.includes(today) ? today : 
-                   dates.includes(yesterday) ? yesterday : null;
+    const startDate = dates.includes(today) ? today :
+                     dates.includes(yesterday) ? yesterday : null;
 
     if (!startDate) return 0;
 
-    let currentDate = new Date(startDate);
+    const currentDate = new Date(startDate);
     
     while (true) {
       const dateStr = currentDate.toDateString();
@@ -114,13 +114,13 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
   const achievement = getAchievementLevel();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-pink-50">
+    <div className="min-h-screen bg-[#F4F6F8]">
       <div className="px-4 pt-8 pb-6">
         <div className="max-w-md mx-auto">
           {/* Beautiful Header */}
           <div className="mb-8 animate-fade-in">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="p-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl">
+              <div className="p-3 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg">
                 <TrendingUp size={24} className="text-white" />
               </div>
               <div>
@@ -132,7 +132,7 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
 
           {/* Beautiful Current Streak */}
           <div className="mb-8 animate-scale-in">
-            <div className="bg-gradient-to-br from-orange-400 via-red-500 to-pink-500 rounded-3xl p-8 text-white shadow-beautiful-lg relative overflow-hidden">
+            <div className="bg-gradient-to-r from-[#00C853] to-[#009624] rounded-lg p-8 text-white shadow-beautiful-lg relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
               
@@ -165,9 +165,9 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
           {/* Beautiful Achievement Badge */}
           {achievement && (
             <div className="mb-8 animate-bounce-gentle">
-              <div className={`bg-gradient-to-r ${achievement.color} rounded-3xl p-6 text-white shadow-beautiful-lg`}>
+              <div className={`bg-gradient-to-r ${achievement.color} rounded-lg p-6 text-white shadow-beautiful-lg`}>
                 <div className="flex items-center space-x-4">
-                  <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-sm">
+                  <div className="p-3 bg-white/20 rounded-lg backdrop-blur-sm">
                     <achievement.icon size={32} className="text-white" />
                   </div>
                   <div>
@@ -186,7 +186,7 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
           <div className="grid grid-cols-2 gap-4 mb-8">
             <div className="stats-card animate-slide-up" style={{ animationDelay: '100ms' }}>
               <div className="flex items-center space-x-3 mb-4">
-                <div className="p-2 bg-blue-100 rounded-xl">
+                <div className="p-2 bg-blue-100 rounded-lg">
                   <Target size={20} className="text-blue-600" />
                 </div>
                 <h3 className="font-bold text-gray-900">Today</h3>
@@ -200,7 +200,7 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
 
             <div className="stats-card animate-slide-up" style={{ animationDelay: '200ms' }}>
               <div className="flex items-center space-x-3 mb-4">
-                <div className="p-2 bg-green-100 rounded-xl">
+                <div className="p-2 bg-green-100 rounded-lg">
                   <Calendar size={20} className="text-green-600" />
                 </div>
                 <h3 className="font-bold text-gray-900">This Week</h3>
@@ -218,7 +218,7 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
             <div className="card-beautiful p-8">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <div className="p-3 bg-purple-100 rounded-2xl">
+                  <div className="p-3 bg-purple-100 rounded-lg">
                     <TrendingUp size={24} className="text-purple-600" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900">Overall Progress</h3>
@@ -229,7 +229,7 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
               </div>
               <div className="progress-beautiful mb-4">
                 <div 
-                  className="h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r from-purple-500 to-blue-500"
+                  className="h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r from-[#007BFF] to-[#0056b3]"
                   style={{ width: `${completionRate}%` }}
                 />
               </div>
@@ -249,8 +249,8 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
 
           {/* Beautiful Motivational Message */}
           <div className="animate-slide-up" style={{ animationDelay: '400ms' }}>
-            <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-8 text-center border border-indigo-100 shadow-beautiful">
-              <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-float">
+            <div className="bg-[#F4F6F8] rounded-lg p-8 text-center border border-indigo-100 shadow-beautiful">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg flex items-center justify-center mx-auto mb-6 animate-float">
                 <Star size={32} className="text-white" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
