@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, CheckCircle2, Circle, Timer, Waves, Play, Pause, CalendarDays } from 'lucide-react';
+import { Calendar, CheckCircle2, Circle, Timer, Waves, Play, Pause, CalendarDays, Sun, Star } from 'lucide-react';
 import { Task, Settings } from '../types';
 
 interface ScheduleProps {
@@ -71,10 +71,10 @@ const Schedule: React.FC<ScheduleProps> = ({
   const getDateIcon = (dateString: string) => {
     const today = new Date().toDateString();
     const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000).toDateString();
-    
-    if (dateString === today) return '🌟';
-    if (dateString === tomorrow) return '⭐';
-    return '📅';
+
+    if (dateString === today) return <Sun size={20} className="text-yellow-500" />;
+    if (dateString === tomorrow) return <Star size={20} className="text-yellow-500" />;
+    return <CalendarDays size={20} className="text-gray-500" />;
   };
 
   return (
@@ -120,7 +120,7 @@ const Schedule: React.FC<ScheduleProps> = ({
                   >
                     {/* Beautiful Date Header */}
                     <div className="flex items-center space-x-3 mb-8">
-                      <span className="text-2xl">{getDateIcon(date)}</span>
+                      <span className="text-2xl flex items-center justify-center">{getDateIcon(date)}</span>
                       <h2 className="text-2xl font-bold text-gray-900">{formatDate(date)}</h2>
                       <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent ml-4"></div>
                     </div>
@@ -172,7 +172,7 @@ const Schedule: React.FC<ScheduleProps> = ({
                                   )}
                                 </div>
                                 {!task.completed && (
-                                  <div className="flex items-center space-x-3">
+                                  <div className="flex items-center justify-center space-x-3">
                                     {task.status !== 'active' ? (
                                       <button
                                         onClick={() => onUpdateTaskStatus(task.id, 'active')}
@@ -250,7 +250,7 @@ const Schedule: React.FC<ScheduleProps> = ({
                                   )}
                                 </div>
                                 {!task.completed && (
-                                  <div className="flex items-center space-x-3">
+                                  <div className="flex items-center justify-center space-x-3">
                                     {task.status !== 'active' ? (
                                       <button
                                         onClick={() => onUpdateTaskStatus(task.id, 'active')}

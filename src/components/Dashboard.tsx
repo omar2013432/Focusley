@@ -25,7 +25,7 @@ const Dashboard: React.FC<DashboardProps> = ({
   const [taskInput, setTaskInput] = useState('');
   const [isTimedTask, setIsTimedTask] = useState(true);
   const [activeTaskMenu, setActiveTaskMenu] = useState<string | null>(null);
-  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const today = new Date().toDateString();
   const todayTasks = tasks.filter(task => 
@@ -59,18 +59,21 @@ const Dashboard: React.FC<DashboardProps> = ({
     if (taskInput.trim()) {
       onAddTask(taskInput.trim(), isTimedTask);
       setTaskInput('');
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000);
+      setToastMessage('Task added!');
+      setTimeout(() => setToastMessage(null), 3000);
     }
   };
 
   const handleTaskAction = (taskId: string, action: 'delete' | 'reschedule') => {
     if (action === 'delete') {
       onDeleteTask(taskId);
+      setToastMessage('Task deleted');
     } else if (action === 'reschedule') {
       onRescheduleTask(taskId);
+      setToastMessage('Task rescheduled');
     }
     setActiveTaskMenu(null);
+    setTimeout(() => setToastMessage(null), 3000);
   };
 
   const currentActiveTask = activeTasks[0];
@@ -174,7 +177,7 @@ const Dashboard: React.FC<DashboardProps> = ({
                     value={taskInput}
                     onChange={(e) => setTaskInput(e.target.value)}
                     placeholder="e.g., Finish homework (45 minutes)"
-                    className="input-beautiful text-base pr-24 h-12 placeholder-gray-500"
+                    className="input-beautiful text-base pr-24 h-12 placeholder-gray-600"
                     autoFocus
                   />
                   <button
@@ -325,7 +328,7 @@ const Dashboard: React.FC<DashboardProps> = ({
                           )}
                         </div>
                         {!task.completed && (
-                          <div className="flex items-center space-x-3">
+                          <div className="flex items-center justify-center space-x-3">
                             {task.status !== 'active' ? (
                               <button
                                 onClick={() => onUpdateTaskStatus(task.id, 'active')}
@@ -381,7 +384,7 @@ const Dashboard: React.FC<DashboardProps> = ({
             )}
           </div>
         </div>
-        <Toast message="Task added to schedule!" visible={showToast} />
+        <Toast message={toastMessage ?? ''} visible={toastMessage !== null} />
       </div>
     </div>
   );

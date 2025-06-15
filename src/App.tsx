@@ -233,6 +233,7 @@ function App() {
             <button
               key={id}
               onClick={() => setActiveTab(id)}
+              aria-current={activeTab === id ? 'page' : undefined}
               className={`flex flex-col items-center py-3 px-5 rounded-2xl transition-all duration-300 ${
                 activeTab === id
                   ? `bg-gradient-to-r ${gradient} text-white shadow-beautiful-lg transform scale-110 ring-2 ring-blue-200`
