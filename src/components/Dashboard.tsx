@@ -189,6 +189,7 @@ const Dashboard: React.FC<DashboardProps> = ({
                   </button>
                 </div>
                 <p className="text-xs text-gray-500">Press Enter to add</p>
+                <p className="text-xs text-gray-500">Tip: include the number of minutes in parentheses</p>
               </form>
             </div>
           </div>
