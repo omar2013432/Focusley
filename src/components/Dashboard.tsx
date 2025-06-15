@@ -279,10 +279,10 @@ const Dashboard: React.FC<DashboardProps> = ({
                   <div
                     key={task.id}
                     className={`card-beautiful p-6 transition-all duration-300 relative animate-slide-up animate-scale-in ${
-                      task.completed 
+                      task.completed
                         ? 'bg-gradient-purple-soft border-purple-200'
                         : task.status === 'active'
-                        ? 'bg-gradient-blue-soft border-blue-200 shadow-beautiful-lg'
+                        ? 'bg-gradient-blue-soft border-blue-200 shadow-beautiful-lg ring-2 ring-blue-300'
                         : 'hover:shadow-beautiful-hover'
                     }`}
                     style={{ animationDelay: `${index * 100}ms` }}
@@ -299,51 +299,62 @@ const Dashboard: React.FC<DashboardProps> = ({
                         )}
                       </button>
                       <div className="flex-1 min-w-0">
-                        <h3 className={`font-bold text-lg leading-tight mb-3 ${
-                          task.completed ? 'task-completed' : 'text-gray-900'
-                        }`}>
-                          {task.title}
+                        <h3
+                          className={`font-bold text-lg leading-tight mb-2 ${
+                            task.completed ? 'task-completed' : 'text-gray-900'
+                          }`}
+                        >
+                          {task.title.trim().charAt(0).toUpperCase() +
+                            task.title.trim().slice(1)}
                         </h3>
-                        <div className="flex items-center flex-wrap gap-3 mb-4">
+                        <div className="flex items-center gap-2 text-sm mb-2">
                           {task.scheduledTime ? (
                             <span className="time-display text-gray-800">
                               {formatTime(task.scheduledTime)}
                             </span>
                           ) : (
-                            <span className="task-type-flexible">
-                              Flexible
-                            </span>
+                            <span className="task-type-flexible">Flexible</span>
                           )}
                           <span className="time-display text-gray-600">
                             {task.duration} min
                           </span>
                           <div className="flex items-center">
                             {task.isTimedTask ? (
-                              <Timer size={16} className="text-blue-500" />
+                              <Timer
+                                size={16}
+                                className="text-blue-500"
+                                title="Timed Task"
+                              />
                             ) : (
-                              <Waves size={16} className="text-purple-500" />
+                              <Waves
+                                size={16}
+                                className="text-purple-500"
+                                title="Flexible Task"
+                              />
                             )}
                           </div>
                           {task.status === 'active' && (
-                            <div className="status-active flex items-center space-x-2 text-blue-600 font-semibold text-sm">
+                            <div className="status-active flex items-center space-x-1 text-blue-600 font-semibold text-xs px-2 py-1 rounded-lg bg-blue-100">
                               <span>Active</span>
                             </div>
                           )}
                         </div>
                         {!task.completed && (
-                          <div className="flex items-center justify-center space-x-3">
+                          <div className="flex items-center justify-center gap-x-3 gap-y-2">
                             {task.status !== 'active' ? (
                               <button
                                 onClick={() => onUpdateTaskStatus(task.id, 'active')}
-                                className="btn-primary flex items-center space-x-2"
+                                className="btn-primary flex items-center space-x-2 py-2 px-4"
                               >
                                 <Play size={16} />
                                 <span>Start Task</span>
                               </button>
                             ) : (
                               <button
-                                onClick={() => onUpdateTaskStatus(task.id, 'not-started')}
-                                className="btn-secondary flex items-center space-x-2"
+                                onClick={() =>
+                                  onUpdateTaskStatus(task.id, 'not-started')
+                                }
+                                className="bg-blue-100 text-blue-700 font-medium px-4 py-2 rounded-xl hover:bg-blue-200 transition-all flex items-center space-x-2"
                               >
                                 <Pause size={16} />
                                 <span>Pause Task</span>
