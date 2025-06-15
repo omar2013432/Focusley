@@ -19,7 +19,7 @@ const Goals: React.FC<GoalsProps> = ({ goals, onAddGoal }) => {
   const colorOptions = [
     { name: 'blue', bg: 'bg-blue-500', label: 'Blue' },
     { name: 'purple', bg: 'bg-purple-500', label: 'Purple' },
-    { name: 'green', bg: 'bg-green-500', label: 'Green' },
+    { name: 'indigo', bg: 'bg-indigo-500', label: 'Indigo' },
     { name: 'orange', bg: 'bg-orange-500', label: 'Orange' },
     { name: 'pink', bg: 'bg-pink-500', label: 'Pink' },
     { name: 'gray', bg: 'bg-gray-500', label: 'Gray' }

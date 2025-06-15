@@ -227,7 +227,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           {/* Beautiful Flexible Tasks Summary */}
           {flexibleTasks.length > 0 && (
             <div className="mb-8 animate-slide-up">
-              <div className="bg-gradient-to-r from-[#00C853] to-[#009624] rounded-lg p-6 text-white shadow-beautiful-lg">
+              <div className="bg-gradient-to-r from-[#8b5cf6] to-[#7c3aed] rounded-lg p-6 text-white shadow-beautiful-lg">
                 <div className="flex items-center space-x-3 mb-3">
                   <Waves size={20} className="text-white" />
                   <h3 className="font-bold text-lg">Flexible Tasks</h3>
@@ -277,7 +277,7 @@ const Dashboard: React.FC<DashboardProps> = ({
                     key={task.id}
                     className={`card-beautiful p-6 transition-all duration-300 relative animate-slide-up ${
                       task.completed 
-                        ? 'bg-gradient-green-soft border-green-200' 
+                        ? 'bg-gradient-purple-soft border-purple-200'
                         : task.status === 'active'
                         ? 'bg-gradient-blue-soft border-blue-200 shadow-beautiful-lg'
                         : 'hover:shadow-beautiful-hover'
@@ -290,7 +290,7 @@ const Dashboard: React.FC<DashboardProps> = ({
                         className="mt-1 transition-all duration-300 hover:scale-110"
                       >
                         {task.completed ? (
-                          <CheckCircle2 size={24} className="text-green-600" />
+                          <CheckCircle2 size={24} className="text-purple-600" />
                         ) : (
                           <Circle size={24} className="text-gray-400 hover:text-gray-600" />
                         )}
