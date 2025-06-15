@@ -225,10 +225,10 @@ function App() {
       <nav className="nav-beautiful px-6 py-4 safe-area-pb">
         <div className="flex justify-around items-center max-w-md mx-auto">
           {[
-            { id: 'dashboard', icon: Home, label: 'Today', gradient: 'from-[#007BFF] to-[#0056b3]' },
-            { id: 'schedule', icon: Calendar, label: 'Schedule', gradient: 'from-[#007BFF] to-[#0056b3]' },
-            { id: 'streaks', icon: Flame, label: 'Progress', gradient: 'from-[#007BFF] to-[#0056b3]' },
-            { id: 'settings', icon: Settings, label: 'Settings', gradient: 'from-[#007BFF] to-[#0056b3]' }
+            { id: 'dashboard', icon: Home, label: 'Today', gradient: 'from-[#1a1a1a] to-[#000000]' },
+            { id: 'schedule', icon: Calendar, label: 'Schedule', gradient: 'from-[#1a1a1a] to-[#000000]' },
+            { id: 'streaks', icon: Flame, label: 'Progress', gradient: 'from-[#1a1a1a] to-[#000000]' },
+            { id: 'settings', icon: Settings, label: 'Settings', gradient: 'from-[#1a1a1a] to-[#000000]' }
           ].map(({ id, icon: Icon, label, gradient }) => (
             <button
               key={id}
