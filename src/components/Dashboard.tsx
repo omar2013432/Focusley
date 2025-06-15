@@ -321,7 +321,7 @@ const Dashboard: React.FC<DashboardProps> = ({
                             {task.isTimedTask ? (
                               <Timer size={16} className="text-blue-500" />
                             ) : (
-                              <Waves size={16} className="text-purple-500" />
+                              <Waves size={16} className="text-orange-500" />
                             )}
                           </div>
                           {task.status === 'active' && (

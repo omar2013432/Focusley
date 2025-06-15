@@ -209,8 +209,8 @@ const Schedule: React.FC<ScheduleProps> = ({
                     {flexibleTasks.length > 0 && (
                       <div className="space-y-4">
                         <div className="flex items-center space-x-2 mb-4">
-                          <Waves size={18} className="text-purple-600" />
-                          <h3 className="text-lg font-bold text-purple-900">Flexible Tasks</h3>
+                          <Waves size={18} className="text-orange-600" />
+                          <h3 className="text-lg font-bold text-orange-900">Flexible Tasks</h3>
                         </div>
                         {flexibleTasks.map((task, taskIndex) => (
                           <div
@@ -242,7 +242,7 @@ const Schedule: React.FC<ScheduleProps> = ({
                                   <span className="time-display text-gray-600">
                                     {task.duration} min
                                   </span>
-                                  <Waves size={16} className="text-purple-500" />
+                                  <Waves size={16} className="text-orange-500" />
                                   {task.status === 'active' && (
                                     <div className="status-active flex items-center space-x-2 text-blue-600 font-semibold text-sm">
                                       <span>Active</span>

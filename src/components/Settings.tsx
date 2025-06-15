@@ -93,8 +93,8 @@ const SettingsPage: React.FC<SettingsProps> = ({
             {/* Beautiful Focus Settings */}
             <div className="settings-section animate-slide-up" style={{ animationDelay: '200ms' }}>
               <div className="settings-header">
-                <div className="settings-icon bg-purple-100">
-                  <Clock size={20} className="text-purple-600" />
+                <div className="settings-icon bg-orange-100">
+                  <Clock size={20} className="text-orange-600" />
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">Focus Hours</h2>
               </div>
@@ -159,8 +159,8 @@ const SettingsPage: React.FC<SettingsProps> = ({
             {/* Beautiful Preferences */}
             <div className="settings-section animate-slide-up" style={{ animationDelay: '300ms' }}>
               <div className="settings-header">
-                <div className="settings-icon bg-purple-100">
-                  <Palette size={20} className="text-purple-600" />
+                <div className="settings-icon bg-orange-100">
+                  <Palette size={20} className="text-orange-600" />
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">Preferences</h2>
               </div>
