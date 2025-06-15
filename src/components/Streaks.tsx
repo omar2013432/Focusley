@@ -98,7 +98,7 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
   };
 
   const getStreakEmoji = () => {
-    if (currentStreak === 0) return <Leaf size={32} className="text-purple-600" />;
+    if (currentStreak === 0) return <Leaf size={32} className="text-orange-500" />;
     if (currentStreak < 7) return <Flame size={32} className="text-orange-600" />;
     if (currentStreak < 30) return <Zap size={32} className="text-yellow-500" />;
     return <Trophy size={32} className="text-yellow-600" />;
@@ -106,8 +106,8 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
 
   const getAchievementLevel = () => {
     if (currentStreak >= 30) return { title: "Productivity Legend", color: "from-yellow-400 to-orange-500", icon: Trophy };
-    if (currentStreak >= 14) return { title: "Consistency Champion", color: "from-purple-400 to-pink-500", icon: Award };
-    if (currentStreak >= 7) return { title: "Week Warrior", color: "from-blue-400 to-indigo-500", icon: Star };
+    if (currentStreak >= 14) return { title: "Consistency Champion", color: "from-orange-400 to-pink-500", icon: Award };
+    if (currentStreak >= 7) return { title: "Week Warrior", color: "from-teal-400 to-emerald-500", icon: Star };
     return null;
   };
 
@@ -120,20 +120,20 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
         <div className="max-w-md mx-auto">
           {/* Beautiful Header */}
           <div className="mb-8 animate-fade-in">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="p-3 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg">
-                <TrendingUp size={24} className="text-white" />
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="p-3 bg-gradient-to-r from-[#ff7e5f] to-[#feb47b] rounded-lg">
+                  <TrendingUp size={24} className="text-white" />
+                </div>
+                <div>
+                  <h1 className="text-3xl font-bold bg-gradient-to-r from-[#ff7e5f] to-[#feb47b] bg-clip-text text-transparent">Progress</h1>
+                  <p className="text-gray-600 text-base">Track your productivity journey</p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gradient-secondary">Progress</h1>
-                <p className="text-gray-600 text-base">Track your productivity journey</p>
-              </div>
-            </div>
           </div>
 
           {/* Beautiful Current Streak */}
-          <div className="mb-8 animate-scale-in">
-            <div className="bg-gradient-to-r from-[#8b5cf6] to-[#7c3aed] rounded-lg p-8 text-white shadow-beautiful-lg relative overflow-hidden">
+            <div className="mb-8 animate-scale-in">
+              <div className="bg-gradient-to-r from-[#ff7e5f] to-[#feb47b] rounded-lg p-8 text-white shadow-beautiful-lg relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
               
@@ -187,29 +187,29 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
 
           {/* Beautiful Stats Grid */}
           <div className="grid grid-cols-2 gap-4 mb-8">
-            <div className="stats-card animate-slide-up" style={{ animationDelay: '100ms' }}>
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="p-2 bg-blue-100 rounded-lg">
-                  <Target size={20} className="text-blue-600" />
-                </div>
+              <div className="stats-card animate-slide-up" style={{ animationDelay: '100ms' }}>
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="p-2 bg-orange-100 rounded-lg">
+                    <Target size={20} className="text-orange-500" />
+                  </div>
                 <h3 className="font-bold text-gray-900">Today</h3>
               </div>
               <div className="flex items-baseline space-x-2 mb-2">
-                <span className="stats-number text-blue-600">{stats.today.completed}</span>
+                  <span className="stats-number text-orange-500">{stats.today.completed}</span>
                 <span className="text-xl text-gray-500 font-semibold">/{stats.today.total}</span>
               </div>
               <p className="stats-label">Tasks completed</p>
             </div>
 
-            <div className="stats-card animate-slide-up" style={{ animationDelay: '200ms' }}>
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <Calendar size={20} className="text-purple-600" />
-                </div>
+              <div className="stats-card animate-slide-up" style={{ animationDelay: '200ms' }}>
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="p-2 bg-teal-100 rounded-lg">
+                    <Calendar size={20} className="text-teal-600" />
+                  </div>
                 <h3 className="font-bold text-gray-900">This Week</h3>
               </div>
               <div className="flex items-baseline space-x-2 mb-2">
-                <span className="stats-number text-purple-600">{stats.thisWeek.completed}</span>
+                  <span className="stats-number text-teal-600">{stats.thisWeek.completed}</span>
                 <span className="text-xl text-gray-500 font-semibold">/{stats.thisWeek.total}</span>
               </div>
               <p className="stats-label">Tasks completed</p>
@@ -221,20 +221,20 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
             <div className="card-beautiful p-8">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <div className="p-3 bg-purple-100 rounded-lg">
-                    <TrendingUp size={24} className="text-purple-600" />
+                  <div className="p-3 bg-orange-100 rounded-lg">
+                    <TrendingUp size={24} className="text-orange-500" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900">Overall Progress</h3>
                 </div>
-                <span className="text-4xl font-bold text-gradient-primary">
-                  {Math.round(completionRate)}%
-                </span>
+                  <span className="text-4xl font-bold bg-gradient-to-r from-[#ff7e5f] to-[#feb47b] bg-clip-text text-transparent">
+                    {Math.round(completionRate)}%
+                  </span>
               </div>
               <div className="progress-beautiful mb-4">
-                <div 
-                  className="h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r from-[#007BFF] to-[#0056b3]"
-                  style={{ width: `${completionRate}%` }}
-                />
+                  <div
+                    className="h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r from-[#ff7e5f] to-[#feb47b]"
+                    style={{ width: `${completionRate}%` }}
+                  />
               </div>
               <div className="flex items-center justify-between text-sm">
                 <span className="text-gray-600">
@@ -251,11 +251,11 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
           </div>
 
           {/* Beautiful Motivational Message */}
-          <div className="animate-slide-up" style={{ animationDelay: '400ms' }}>
-            <div className="bg-[#F4F6F8] rounded-lg p-8 text-center border border-indigo-100 shadow-beautiful">
-              <div className="w-16 h-16 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg flex items-center justify-center mx-auto mb-6 animate-float">
-                <Star size={32} className="text-white" />
-              </div>
+            <div className="animate-slide-up" style={{ animationDelay: '400ms' }}>
+              <div className="bg-[#F4F6F8] rounded-lg p-8 text-center border border-indigo-100 shadow-beautiful">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#ff7e5f] to-[#feb47b] rounded-lg flex items-center justify-center mx-auto mb-6 animate-float">
+                  <Star size={32} className="text-white" />
+                </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 {getMotivationalMessage()}
               </h3>
