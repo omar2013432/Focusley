@@ -98,7 +98,7 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
   };
 
   const getStreakEmoji = () => {
-    if (currentStreak === 0) return <Leaf size={32} className="text-green-600" />;
+    if (currentStreak === 0) return <Leaf size={32} className="text-purple-600" />;
     if (currentStreak < 7) return <Flame size={32} className="text-orange-600" />;
     if (currentStreak < 30) return <Zap size={32} className="text-yellow-500" />;
     return <Trophy size={32} className="text-yellow-600" />;
@@ -133,7 +133,7 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
 
           {/* Beautiful Current Streak */}
           <div className="mb-8 animate-scale-in">
-            <div className="bg-gradient-to-r from-[#00C853] to-[#009624] rounded-lg p-8 text-white shadow-beautiful-lg relative overflow-hidden">
+            <div className="bg-gradient-to-r from-[#8b5cf6] to-[#7c3aed] rounded-lg p-8 text-white shadow-beautiful-lg relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
               
@@ -203,13 +203,13 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
 
             <div className="stats-card animate-slide-up" style={{ animationDelay: '200ms' }}>
               <div className="flex items-center space-x-3 mb-4">
-                <div className="p-2 bg-green-100 rounded-lg">
-                  <Calendar size={20} className="text-green-600" />
+                <div className="p-2 bg-purple-100 rounded-lg">
+                  <Calendar size={20} className="text-purple-600" />
                 </div>
                 <h3 className="font-bold text-gray-900">This Week</h3>
               </div>
               <div className="flex items-baseline space-x-2 mb-2">
-                <span className="stats-number text-green-600">{stats.thisWeek.completed}</span>
+                <span className="stats-number text-purple-600">{stats.thisWeek.completed}</span>
                 <span className="text-xl text-gray-500 font-semibold">/{stats.thisWeek.total}</span>
               </div>
               <p className="stats-label">Tasks completed</p>
