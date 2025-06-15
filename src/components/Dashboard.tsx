@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Circle, Clock, Timer, Waves, MoreHorizontal, Trash2, RotateCcw, Play, Pause, Sparkles, Target } from 'lucide-react';
+import { CheckCircle2, Circle, Clock, Timer, Waves, MoreHorizontal, Trash2, RotateCcw, Play, Pause, Sparkles, Target, Plus } from 'lucide-react';
 import { Task, Settings } from '../types';
 
 interface DashboardProps {
