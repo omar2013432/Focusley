@@ -144,7 +144,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           <div className="mb-8 animate-slide-up">
             <div className="card-beautiful p-8">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="p-2 bg-gradient-to-r from-[#ff7e5f] to-[#feb47b] rounded-full">
+                <div className="p-2 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-full">
                   <Plus size={20} className="text-white" />
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">
@@ -183,12 +183,13 @@ const Dashboard: React.FC<DashboardProps> = ({
                   <button
                     type="submit"
                     disabled={!taskInput.trim()}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 transform p-2 h-10 bg-gradient-to-r from-[#ff7e5f] to-[#feb47b] text-white rounded-lg hover:shadow-beautiful disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 transform p-2 h-10 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-lg hover:shadow-beautiful disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                   >
                     <Plus size={20} />
                   </button>
                 </div>
                 <p className="text-xs text-gray-500">Press Enter to add</p>
+                <p className="text-xs text-gray-500">Tip: include the number of minutes in parentheses</p>
               </form>
             </div>
           </div>
