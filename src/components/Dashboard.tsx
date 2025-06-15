@@ -279,8 +279,8 @@ const Dashboard: React.FC<DashboardProps> = ({
                   <div
                     key={task.id}
                     className={`card-beautiful p-6 transition-all duration-300 relative animate-slide-up animate-scale-in ${
-                      task.completed 
-                        ? 'bg-gradient-purple-soft border-purple-200'
+                      task.completed
+                        ? 'bg-gradient-orange-soft border-orange-200'
                         : task.status === 'active'
                         ? 'bg-gradient-blue-soft border-blue-200 shadow-beautiful-lg'
                         : 'hover:shadow-beautiful-hover'
@@ -292,9 +292,9 @@ const Dashboard: React.FC<DashboardProps> = ({
                         onClick={() => onToggleTask(task.id)}
                         className="mt-1 transition-all duration-300 hover:scale-110"
                       >
-                        {task.completed ? (
-                          <CheckCircle2 size={24} className="text-purple-600" />
-                        ) : (
+                          {task.completed ? (
+                            <CheckCircle2 size={24} className="text-orange-600" />
+                          ) : (
                           <Circle size={24} className="text-gray-400 hover:text-gray-600" />
                         )}
                       </button>

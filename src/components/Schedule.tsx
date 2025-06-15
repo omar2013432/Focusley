@@ -63,7 +63,7 @@ const Schedule: React.FC<ScheduleProps> = ({
   };
 
   const getTaskStatusStyle = (task: Task) => {
-    if (task.completed) return 'bg-gradient-purple-soft border-purple-200';
+    if (task.completed) return 'bg-gradient-orange-soft border-orange-200';
     if (task.status === 'active') return 'bg-gradient-blue-soft border-blue-200 shadow-beautiful-lg';
     return 'bg-white border-gray-100 hover:shadow-beautiful-hover';
   };
@@ -145,9 +145,9 @@ const Schedule: React.FC<ScheduleProps> = ({
                                 onClick={() => onToggleTask(task.id)}
                                 className="mt-1 transition-all duration-300 hover:scale-110"
                               >
-                                {task.completed ? (
-                                  <CheckCircle2 size={24} className="text-purple-600" />
-                                ) : (
+                                  {task.completed ? (
+                                    <CheckCircle2 size={24} className="text-orange-600" />
+                                  ) : (
                                   <Circle size={24} className="text-gray-400 hover:text-gray-600" />
                                 )}
                               </button>
@@ -223,9 +223,9 @@ const Schedule: React.FC<ScheduleProps> = ({
                                 onClick={() => onToggleTask(task.id)}
                                 className="mt-1 transition-all duration-300 hover:scale-110"
                               >
-                                {task.completed ? (
-                                  <CheckCircle2 size={24} className="text-purple-600" />
-                                ) : (
+                                  {task.completed ? (
+                                    <CheckCircle2 size={24} className="text-orange-600" />
+                                  ) : (
                                   <Circle size={24} className="text-gray-400 hover:text-gray-600" />
                                 )}
                               </button>
