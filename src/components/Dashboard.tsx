@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Circle, Clock, Timer, Waves, MoreHorizontal, Trash2, RotateCcw, Play, Pause, Sparkles, Target, Plus } from 'lucide-react';
+import { CheckCircle2, Circle, Clock, Timer, Waves, MoreHorizontal, Trash2, RotateCcw, Play, Pause, Sparkles, Target, Plus, Info } from 'lucide-react';
+import Toast from './Toast';
 import { Task, Settings } from '../types';
 
 interface DashboardProps {
@@ -24,6 +25,7 @@ const Dashboard: React.FC<DashboardProps> = ({
   const [taskInput, setTaskInput] = useState('');
   const [isTimedTask, setIsTimedTask] = useState(true);
   const [activeTaskMenu, setActiveTaskMenu] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
 
   const today = new Date().toDateString();
   const todayTasks = tasks.filter(task => 
@@ -57,6 +59,8 @@ const Dashboard: React.FC<DashboardProps> = ({
     if (taskInput.trim()) {
       onAddTask(taskInput.trim(), isTimedTask);
       setTaskInput('');
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000);
     }
   };
 
@@ -86,7 +90,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           <div className="mb-8 animate-fade-in">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h1 className="text-3xl font-bold text-gradient-primary leading-tight">
+                <h1 className="text-3xl font-extrabold text-gray-800 leading-tight">
                   {getGreeting()}{settings.nickname ? `, ${settings.nickname}` : ''}
                 </h1>
                 <p className="text-gray-600 text-base mt-2 flex items-center space-x-2">
@@ -159,6 +163,7 @@ const Dashboard: React.FC<DashboardProps> = ({
                       <span className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors duration-200">
                         Make this a timed task
                       </span>
+                      <Info size={16} className="text-gray-500" title="Timed tasks are scheduled automatically. Uncheck to keep flexible." />
                     </div>
                   </label>
                 </div>
@@ -169,13 +174,13 @@ const Dashboard: React.FC<DashboardProps> = ({
                     value={taskInput}
                     onChange={(e) => setTaskInput(e.target.value)}
                     placeholder="e.g., Finish homework (45 minutes)"
-                    className="input-beautiful text-base pr-24"
+                    className="input-beautiful text-base pr-24 h-12 placeholder-gray-500"
                     autoFocus
                   />
                   <button
                     type="submit"
                     disabled={!taskInput.trim()}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 px-4 py-2 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-lg hover:shadow-beautiful disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 transform px-4 py-2 h-10 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-lg hover:shadow-beautiful disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center"
                   >
                     Add Task
                   </button>
@@ -235,7 +240,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           )}
 
           {/* Beautiful Today's Plan */}
-          <div className="mb-8">
+          <div className="mt-10 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center space-x-2">
               <span>Today's Plan</span>
               <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent ml-4"></div>
@@ -376,6 +381,7 @@ const Dashboard: React.FC<DashboardProps> = ({
             )}
           </div>
         </div>
+        <Toast message="Task added to schedule!" visible={showToast} />
       </div>
     </div>
   );

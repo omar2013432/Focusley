@@ -235,7 +235,7 @@ function App() {
               onClick={() => setActiveTab(id)}
               className={`flex flex-col items-center py-3 px-5 rounded-2xl transition-all duration-300 ${
                 activeTab === id
-                  ? `bg-gradient-to-r ${gradient} text-white shadow-beautiful-lg transform scale-110`
+                  ? `bg-gradient-to-r ${gradient} text-white shadow-beautiful-lg transform scale-110 ring-2 ring-blue-200`
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 hover:shadow-beautiful'
               }`}
             >
