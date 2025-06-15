@@ -221,8 +221,8 @@ function App() {
         {renderContent()}
       </div>
 
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 safe-area-pb">
+      {/* Enhanced Bottom Navigation */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-200 px-4 py-3 safe-area-pb shadow-lg">
         <div className="flex justify-around items-center max-w-md mx-auto">
           {[
             { id: 'dashboard', icon: Home, label: 'Today' },
@@ -233,14 +233,16 @@ function App() {
             <button
               key={id}
               onClick={() => setActiveTab(id)}
-              className={`flex flex-col items-center py-2 px-3 rounded-lg transition-colors ${
+              className={`flex flex-col items-center py-2 px-4 rounded-xl transition-all duration-200 ${
                 activeTab === id
-                  ? 'text-blue-600 bg-blue-50'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'text-blue-600 bg-blue-50 shadow-sm scale-105'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
-              <Icon size={20} />
-              <span className="text-xs mt-1 font-medium">{label}</span>
+              <Icon size={22} className={activeTab === id ? 'mb-1' : 'mb-1'} />
+              <span className={`text-xs font-medium ${activeTab === id ? 'font-semibold' : ''}`}>
+                {label}
+              </span>
             </button>
           ))}
         </div>
