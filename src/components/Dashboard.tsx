@@ -177,7 +177,7 @@ const Dashboard: React.FC<DashboardProps> = ({
                     value={taskInput}
                     onChange={(e) => setTaskInput(e.target.value)}
                     placeholder="e.g. Finish homework (45)"
-                    className="input-beautiful text-base pr-16 h-12 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="input-beautiful text-base pr-16 h-12 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
                     autoFocus
                   />
                   <button
@@ -185,13 +185,13 @@ const Dashboard: React.FC<DashboardProps> = ({
                     aria-label="Add Task"
                     onClick={handleSubmit}
                     disabled={!taskInput.trim()}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 transform p-2 h-10 bg-orange-500 text-white rounded-lg hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 transform p-2 h-10 bg-orange-500 text-white rounded-lg hover:bg-orange-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                   >
                     <Plus size={20} />
                   </button>
                 </div>
-                <p className="text-sm text-gray-500">Press Enter to add</p>
-                <p className="text-sm text-gray-500">Tip: include the number of minutes in parentheses</p>
+                <p className="text-sm text-muted-foreground">Press Enter to add</p>
+                <p className="text-sm text-muted-foreground">Tip: include the number of minutes in parentheses</p>
               </form>
             </div>
           </div>
@@ -199,7 +199,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           {/* Beautiful Active Task Widget */}
           {currentActiveTask && (
             <div className="mb-8 animate-scale-in">
-              <div className="bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg p-6 text-white shadow-beautiful-lg">
+              <div className="bg-gradient-to-r from-[#1a1a1a] to-[#000000] rounded-lg p-6 text-white shadow-beautiful-lg">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
                     <div className="w-3 h-3 bg-white rounded-full animate-pulse-soft"></div>
