@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Home, Calendar, Flame, Settings } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import Schedule from './components/Schedule';

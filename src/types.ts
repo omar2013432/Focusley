@@ -10,6 +10,16 @@ export interface Task {
   createdAt: string;
 }
 
+export interface Goal {
+  id: string;
+  title: string;
+  frequency: number; // times per week
+  duration: number; // minutes
+  color: string;
+  streak: number;
+  createdAt: string;
+}
+
 export interface Settings {
   focusHours: {
     start: string; // "08:00"

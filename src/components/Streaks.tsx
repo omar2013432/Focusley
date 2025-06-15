@@ -112,6 +112,7 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
   };
 
   const achievement = getAchievementLevel();
+  const AchievementIcon = achievement?.icon;
 
   return (
     <div className="min-h-screen bg-[#F4F6F8]">
@@ -168,7 +169,9 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
               <div className={`bg-gradient-to-r ${achievement.color} rounded-lg p-6 text-white shadow-beautiful-lg`}>
                 <div className="flex items-center space-x-4">
                   <div className="p-3 bg-white/20 rounded-lg backdrop-blur-sm">
-                    <achievement.icon size={32} className="text-white" />
+                    {AchievementIcon && (
+                      <AchievementIcon size={32} className="text-white" />
+                    )}
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-1">Achievement Unlocked!</h3>
