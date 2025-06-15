@@ -44,9 +44,6 @@
     background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
   }
   
-  .gradient-purple {
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-  }
   
   .gradient-blue-soft {
     background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
@@ -56,9 +53,6 @@
     background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
   }
   
-  .gradient-purple-soft {
-    background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
-  }
   
   /* Glass morphism effects */
   .glass {
