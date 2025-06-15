@@ -47,13 +47,13 @@ const SettingsPage: React.FC<SettingsProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-[#F4F6F8]">
       <div className="px-4 pt-8 pb-6">
         <div className="max-w-md mx-auto">
           {/* Beautiful Header */}
           <div className="mb-8 animate-fade-in">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="p-3 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl">
+              <div className="p-3 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg">
                 <SettingsIcon size={24} className="text-white" />
               </div>
               <div>
@@ -123,15 +123,15 @@ const SettingsPage: React.FC<SettingsProps> = ({
 
                 <div>
                   <label className="form-label">Max Deep Work Hours Per Day</label>
-                  <select
+                  <input
+                    type="range"
+                    min={1}
+                    max={8}
                     value={settings.maxHoursPerDay}
                     onChange={(e) => handleMaxHoursChange(Number(e.target.value))}
-                    className="input-beautiful"
-                  >
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map(hours => (
-                      <option key={hours} value={hours}>{hours} hour{hours !== 1 ? 's' : ''}</option>
-                    ))}
-                  </select>
+                    className="w-full"
+                  />
+                  <div className="text-sm font-semibold mt-1">{settings.maxHoursPerDay} h</div>
                   <p className="form-help">
                     Prevents over-scheduling and helps maintain sustainable productivity
                   </p>
@@ -139,15 +139,16 @@ const SettingsPage: React.FC<SettingsProps> = ({
 
                 <div>
                   <label className="form-label">Default Task Duration</label>
-                  <select
+                  <input
+                    type="range"
+                    min={15}
+                    max={120}
+                    step={5}
                     value={settings.defaultTaskDuration}
                     onChange={(e) => handleDefaultDurationChange(Number(e.target.value))}
-                    className="input-beautiful"
-                  >
-                    {[15, 25, 30, 45, 60, 90, 120].map(minutes => (
-                      <option key={minutes} value={minutes}>{minutes} minutes</option>
-                    ))}
-                  </select>
+                    className="w-full"
+                  />
+                  <div className="text-sm font-semibold mt-1">{settings.defaultTaskDuration} min</div>
                   <p className="form-help">
                     Used when no duration is specified in your task description
                   </p>
@@ -166,7 +167,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
               
               <div className="form-section">
                 {/* Beautiful Auto Scheduling Toggle */}
-                <div className="flex items-center justify-between p-6 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl border border-yellow-200">
+                <div className="flex items-center justify-between p-6 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200">
                   <div className="flex items-center space-x-4">
                     <div className="settings-icon bg-yellow-100">
                       <Zap size={20} className="text-yellow-600" />
@@ -208,9 +209,9 @@ const SettingsPage: React.FC<SettingsProps> = ({
                       <button
                         key={option.value}
                         onClick={() => handleTimeFormatChange(option.value as '12h' | '24h')}
-                        className={`p-6 rounded-2xl text-sm font-semibold transition-all duration-300 ${
+                        className={`p-6 rounded-lg text-sm font-semibold transition-all duration-300 ${
                           settings.timeFormat === option.value
-                            ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-beautiful-lg transform scale-105'
+                            ? 'bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white shadow-beautiful-lg transform scale-105'
                             : 'bg-gray-50 text-gray-700 border-2 border-gray-200 hover:border-gray-300 hover:shadow-beautiful'
                         }`}
                       >
@@ -231,7 +232,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">Data Management</h2>
               </div>
-              <div className="bg-gradient-to-r from-red-50 to-pink-50 border-2 border-red-200 rounded-2xl p-6">
+              <div className="bg-gradient-to-r from-red-50 to-pink-50 border-2 border-red-200 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
                   <RotateCcw size={20} className="text-red-600" />
                   <h3 className="font-bold text-red-900 text-lg">Reset All Data</h3>
@@ -241,7 +242,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
                 </p>
                 <button
                   onClick={handleReset}
-                  className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-4 px-6 rounded-2xl font-bold transition-all duration-300 shadow-beautiful hover:shadow-beautiful-lg transform hover:-translate-y-1"
+                  className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-4 px-6 rounded-lg font-bold transition-all duration-300 shadow-beautiful hover:shadow-beautiful-lg transform hover:-translate-y-1"
                 >
                   <div className="flex items-center justify-center space-x-2">
                     <RotateCcw size={20} />
@@ -255,7 +256,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
           {/* Beautiful App Info */}
           <div className="mt-8 text-center animate-slide-up" style={{ animationDelay: '500ms' }}>
             <div className="card-beautiful p-8">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-float">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg flex items-center justify-center mx-auto mb-6 animate-float">
                 <SettingsIcon size={32} className="text-white" />
               </div>
               <h3 className="text-2xl font-bold text-gradient-primary mb-2">Focusly v2.0</h3>

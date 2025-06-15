@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, CheckCircle2, Circle, Clock, Timer, Waves, MoreHorizontal, Trash2, RotateCcw, Play, Pause, Sparkles, Target } from 'lucide-react';
+import { CheckCircle2, Circle, Clock, Timer, Waves, MoreHorizontal, Trash2, RotateCcw, Play, Pause, Sparkles, Target } from 'lucide-react';
 import { Task, Settings } from '../types';
 
 interface DashboardProps {
@@ -79,7 +79,7 @@ const Dashboard: React.FC<DashboardProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-[#F4F6F8]">
       <div className="px-4 pt-8 pb-6">
         <div className="max-w-md mx-auto">
           {/* Beautiful Header with Gradient */}
@@ -118,11 +118,13 @@ const Dashboard: React.FC<DashboardProps> = ({
                   </div>
                   <span className="text-sm font-bold text-gradient-primary">{Math.round(progress * 100)}%</span>
                 </div>
-                <div className="progress-beautiful">
-                  <div 
+                <div className="progress-beautiful relative">
+                  <div
                     className="progress-fill"
                     style={{ width: `${progress * 100}%` }}
                   />
+                  <div className="absolute top-0 left-1/4 h-full w-px bg-white/70"></div>
+                  <div className="absolute top-0 left-1/2 h-full w-px bg-white/70"></div>
                 </div>
                 <div className="mt-2 text-xs text-gray-600">
                   Keep going! You're doing great today.
@@ -135,7 +137,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           <div className="mb-8 animate-slide-up">
             <div className="card-beautiful p-8">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="p-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">
+                <div className="p-2 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-full">
                   <Plus size={20} className="text-white" />
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">
@@ -144,24 +146,6 @@ const Dashboard: React.FC<DashboardProps> = ({
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="relative">
-                  <input
-                    type="text"
-                    value={taskInput}
-                    onChange={(e) => setTaskInput(e.target.value)}
-                    placeholder="e.g., Finish homework (45 minutes)"
-                    className="input-beautiful text-base pr-16"
-                    autoFocus
-                  />
-                  <button
-                    type="submit"
-                    disabled={!taskInput.trim()}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 p-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:shadow-beautiful disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
-                  >
-                    <Plus size={18} />
-                  </button>
-                </div>
-                
                 <div className="flex items-center space-x-4">
                   <label className="flex items-center space-x-3 cursor-pointer group">
                     <input
@@ -178,6 +162,25 @@ const Dashboard: React.FC<DashboardProps> = ({
                     </div>
                   </label>
                 </div>
+
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={taskInput}
+                    onChange={(e) => setTaskInput(e.target.value)}
+                    placeholder="e.g., Finish homework (45 minutes)"
+                    className="input-beautiful text-base pr-24"
+                    autoFocus
+                  />
+                  <button
+                    type="submit"
+                    disabled={!taskInput.trim()}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 px-4 py-2 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-lg hover:shadow-beautiful disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                  >
+                    Add Task
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500">Press Enter to add</p>
               </form>
             </div>
           </div>
@@ -185,7 +188,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           {/* Beautiful Active Task Widget */}
           {currentActiveTask && (
             <div className="mb-8 animate-scale-in">
-              <div className="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl p-6 text-white shadow-beautiful-lg">
+              <div className="bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg p-6 text-white shadow-beautiful-lg">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
                     <div className="w-3 h-3 bg-white rounded-full animate-pulse-soft"></div>
@@ -203,7 +206,7 @@ const Dashboard: React.FC<DashboardProps> = ({
                   </div>
                   <button
                     onClick={() => onUpdateTaskStatus(currentActiveTask.id, 'not-started')}
-                    className="flex items-center space-x-2 px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl font-medium transition-all duration-300 backdrop-blur-sm"
+                    className="flex items-center space-x-2 px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg font-medium transition-all duration-300 backdrop-blur-sm"
                   >
                     <Pause size={16} />
                     <span>Pause</span>
@@ -216,7 +219,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           {/* Beautiful Flexible Tasks Summary */}
           {flexibleTasks.length > 0 && (
             <div className="mb-8 animate-slide-up">
-              <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl p-6 text-white shadow-beautiful-lg">
+              <div className="bg-gradient-to-r from-[#00C853] to-[#009624] rounded-lg p-6 text-white shadow-beautiful-lg">
                 <div className="flex items-center space-x-3 mb-3">
                   <Waves size={20} className="text-white" />
                   <h3 className="font-bold text-lg">Flexible Tasks</h3>
@@ -341,12 +344,12 @@ const Dashboard: React.FC<DashboardProps> = ({
                       <div className="relative">
                         <button
                           onClick={() => setActiveTaskMenu(activeTaskMenu === task.id ? null : task.id)}
-                          className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition-all duration-200"
+                          className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-all duration-200"
                         >
                           <MoreHorizontal size={20} />
                         </button>
                         {activeTaskMenu === task.id && (
-                          <div className="absolute right-0 top-12 bg-white border border-gray-200 rounded-2xl shadow-beautiful-lg py-2 z-10 min-w-[160px] animate-scale-in">
+                          <div className="absolute right-0 top-12 bg-white border border-gray-200 rounded-lg shadow-beautiful-lg py-2 z-10 min-w-[160px] animate-scale-in">
                             {task.scheduledTime && (
                               <button
                                 onClick={() => handleTaskAction(task.id, 'reschedule')}
