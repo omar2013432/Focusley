@@ -82,7 +82,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
                   value={settings.nickname}
                   onChange={(e) => handleNicknameChange(e.target.value)}
                   placeholder="How should we address you?"
-                  className="input-beautiful"
+                  className="input-beautiful placeholder-gray-600"
                 />
                 <p className="form-help">
                   This will appear in your daily greeting and make the experience more personal

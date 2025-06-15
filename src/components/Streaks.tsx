@@ -1,5 +1,5 @@
 import React from 'react';
-import { Target, TrendingUp, Award, Calendar, Trophy, Star, Zap } from 'lucide-react';
+import { Target, TrendingUp, Award, Calendar, Trophy, Star, Zap, Leaf, Flame } from 'lucide-react';
 import { Task } from '../types';
 
 interface StreaksProps {
@@ -86,7 +86,7 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
     if (currentStreak === 1) return "Great start! Keep the momentum going.";
     if (currentStreak < 7) return "Building incredible momentum...";
     if (currentStreak < 30) return "You're absolutely crushing it!";
-    return "Legendary productivity master! 🎉";
+    return "Legendary productivity master!";
   };
 
   const getMotivationalMessage = () => {
@@ -94,14 +94,14 @@ const Streaks: React.FC<StreaksProps> = ({ tasks }) => {
     if (currentStreak < 3) return "You're building something amazing!";
     if (currentStreak < 7) return "Consistency is your superpower!";
     if (currentStreak < 30) return "You're unstoppable! Keep this energy flowing!";
-    return "You've achieved something truly extraordinary! 🏆";
+    return "You've achieved something truly extraordinary!";
   };
 
   const getStreakEmoji = () => {
-    if (currentStreak === 0) return "🌱";
-    if (currentStreak < 7) return "🔥";
-    if (currentStreak < 30) return "⚡";
-    return "🏆";
+    if (currentStreak === 0) return <Leaf size={32} className="text-green-600" />;
+    if (currentStreak < 7) return <Flame size={32} className="text-orange-600" />;
+    if (currentStreak < 30) return <Zap size={32} className="text-yellow-500" />;
+    return <Trophy size={32} className="text-yellow-600" />;
   };
 
   const getAchievementLevel = () => {

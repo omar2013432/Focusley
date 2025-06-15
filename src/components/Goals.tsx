@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Target, X } from 'lucide-react';
+import { Plus, Target, X, Flame } from 'lucide-react';
 import { Goal } from '../types';
 
 interface GoalsProps {
@@ -74,7 +74,10 @@ const Goals: React.FC<GoalsProps> = ({ goals, onAddGoal }) => {
                     <div className="flex items-center space-x-4 text-sm text-gray-600">
                       <span>{goal.frequency}x/week</span>
                       <span>{goal.duration} min</span>
-                      <span>🔥 {goal.streak} day streak</span>
+                      <span className="flex items-center space-x-1">
+                        <Flame size={14} className="text-orange-600" />
+                        <span>{goal.streak} day streak</span>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -107,7 +110,7 @@ const Goals: React.FC<GoalsProps> = ({ goals, onAddGoal }) => {
                     value={formData.title}
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                     placeholder="e.g., Morning workout"
-                    className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-600"
                     autoFocus
                   />
                 </div>
