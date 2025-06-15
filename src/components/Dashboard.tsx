@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, CheckCircle2, Circle, Clock, Timer, Waves, MoreHorizontal, Trash2, RotateCcw, Play, Pause } from 'lucide-react';
+import { Plus, CheckCircle2, Circle, Clock, Timer, Waves, MoreHorizontal, Trash2, RotateCcw, Play, Pause, Sparkles, Target } from 'lucide-react';
 import { Task, Settings } from '../types';
 
 interface DashboardProps {
@@ -71,272 +71,307 @@ const Dashboard: React.FC<DashboardProps> = ({
 
   const currentActiveTask = activeTasks[0];
 
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good morning';
+    if (hour < 17) return 'Good afternoon';
+    return 'Good evening';
+  };
+
   return (
-    <div className="px-4 pt-6 pb-4 bg-gray-50 min-h-screen">
-      <div className="max-w-md mx-auto">
-        {/* Enhanced Header */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-3">
-            <div>
-              <h1 className="text-2xl font-semibold text-gray-900 leading-tight">
-                {settings.nickname ? `Hello, ${settings.nickname}` : 'Welcome back'}
-              </h1>
-              <p className="text-gray-600 text-sm mt-1">
-                {new Date().toLocaleDateString('en-US', { 
-                  weekday: 'long',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </p>
-            </div>
-            {todayTasks.length > 0 && (
-              <div className="text-right">
-                <div className="text-2xl font-bold text-blue-600">
-                  {completedTasks.length}/{todayTasks.length}
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <div className="px-4 pt-8 pb-6">
+        <div className="max-w-md mx-auto">
+          {/* Beautiful Header with Gradient */}
+          <div className="mb-8 animate-fade-in">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h1 className="text-3xl font-bold text-gradient-primary leading-tight">
+                  {getGreeting()}{settings.nickname ? `, ${settings.nickname}` : ''}
+                </h1>
+                <p className="text-gray-600 text-base mt-2 flex items-center space-x-2">
+                  <Sparkles size={16} className="text-blue-500" />
+                  <span>{new Date().toLocaleDateString('en-US', { 
+                    weekday: 'long',
+                    month: 'long',
+                    day: 'numeric'
+                  })}</span>
+                </p>
+              </div>
+              {todayTasks.length > 0 && (
+                <div className="text-right animate-bounce-gentle">
+                  <div className="text-3xl font-bold text-gradient-success">
+                    {completedTasks.length}/{todayTasks.length}
+                  </div>
+                  <div className="text-xs text-gray-500 font-medium">completed</div>
                 </div>
-                <div className="text-xs text-gray-500">completed</div>
+              )}
+            </div>
+            
+            {/* Beautiful Progress Bar */}
+            {todayTasks.length > 0 && (
+              <div className="card-beautiful p-6 animate-slide-up">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-2">
+                    <Target size={18} className="text-blue-600" />
+                    <span className="text-base font-semibold text-gray-800">Today's Progress</span>
+                  </div>
+                  <span className="text-sm font-bold text-gradient-primary">{Math.round(progress * 100)}%</span>
+                </div>
+                <div className="progress-beautiful">
+                  <div 
+                    className="progress-fill"
+                    style={{ width: `${progress * 100}%` }}
+                  />
+                </div>
+                <div className="mt-2 text-xs text-gray-600">
+                  Keep going! You're doing great today.
+                </div>
               </div>
             )}
           </div>
-          
-          {/* Enhanced Progress Bar */}
-          {todayTasks.length > 0 && (
-            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-gray-700">Today's Progress</span>
-                <span className="text-sm text-gray-500">{Math.round(progress * 100)}%</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500 ease-out"
-                  style={{ width: `${progress * 100}%` }}
-                />
-              </div>
-            </div>
-          )}
-        </div>
 
-        {/* Enhanced Task Input */}
-        <div className="mb-8">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
-              What do you want to get done today?
-            </h2>
-            
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="relative">
-                <input
-                  type="text"
-                  value={taskInput}
-                  onChange={(e) => setTaskInput(e.target.value)}
-                  placeholder="e.g., Finish homework (45 minutes)"
-                  className="w-full p-4 pr-14 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500 transition-all duration-200"
-                  autoFocus
-                />
-                <button
-                  type="submit"
-                  disabled={!taskInput.trim()}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 text-blue-600 hover:text-blue-700 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors duration-200"
-                >
-                  <Plus size={20} />
-                </button>
+          {/* Beautiful Task Input */}
+          <div className="mb-8 animate-slide-up">
+            <div className="card-beautiful p-8">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="p-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">
+                  <Plus size={20} className="text-white" />
+                </div>
+                <h2 className="text-xl font-bold text-gray-900">
+                  What do you want to get done today?
+                </h2>
               </div>
               
-              <div className="flex items-center space-x-4 text-sm">
-                <label className="flex items-center space-x-2 cursor-pointer group">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="relative">
                   <input
-                    type="checkbox"
-                    checked={isTimedTask}
-                    onChange={(e) => setIsTimedTask(e.target.checked)}
-                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 transition-colors duration-200"
+                    type="text"
+                    value={taskInput}
+                    onChange={(e) => setTaskInput(e.target.value)}
+                    placeholder="e.g., Finish homework (45 minutes)"
+                    className="input-beautiful text-base pr-16"
+                    autoFocus
                   />
-                  <Timer size={16} className="text-gray-600 group-hover:text-blue-600 transition-colors duration-200" />
-                  <span className="text-gray-700 group-hover:text-gray-900 transition-colors duration-200">
-                    Make this a timed task
-                  </span>
-                </label>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        {/* Enhanced Current Active Task Widget */}
-        {currentActiveTask && (
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-5 mb-6 shadow-sm">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                <h3 className="font-semibold text-blue-900">Currently Active</h3>
-              </div>
-              <Timer size={18} className="text-blue-600" />
-            </div>
-            <p className="text-blue-800 font-medium text-lg mb-2">{currentActiveTask.title}</p>
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-blue-600">
-                {currentActiveTask.duration} minutes
-                {currentActiveTask.scheduledTime && (
-                  <span> • Started at {formatTime(currentActiveTask.scheduledTime)}</span>
-                )}
-              </p>
-              <button
-                onClick={() => onUpdateTaskStatus(currentActiveTask.id, 'not-started')}
-                className="flex items-center space-x-1 px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg text-sm font-medium transition-colors duration-200"
-              >
-                <Pause size={14} />
-                <span>Pause</span>
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Enhanced Flexible Tasks Summary */}
-        {flexibleTasks.length > 0 && (
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-2xl p-5 mb-6 shadow-sm">
-            <div className="flex items-center space-x-2 mb-2">
-              <Waves size={18} className="text-purple-600" />
-              <h3 className="font-semibold text-purple-900">Flexible Tasks</h3>
-            </div>
-            <p className="text-purple-800 font-medium">
-              {flexibleTasks.length} flexible task{flexibleTasks.length !== 1 ? 's' : ''} remaining
-            </p>
-            <p className="text-sm text-purple-600 mt-1">
-              Complete these at your own pace
-            </p>
-          </div>
-        )}
-
-        {/* Enhanced Today's Plan */}
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-5">Today's Plan</h2>
-
-          {todayTasks.length === 0 ? (
-            <div className="bg-white rounded-2xl p-8 text-center border border-gray-100 shadow-sm">
-              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock size={28} className="text-gray-400" />
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">
-                Nothing planned yet for today
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Add your first task above to get started with your productive day
-              </p>
-            </div>
-          ) : (
-            <div className="space-y-3">
-              {todayTasks
-                .sort((a, b) => {
-                  // Sort by scheduled time, then by creation time
-                  if (a.scheduledTime && b.scheduledTime) {
-                    return new Date(a.scheduledTime).getTime() - new Date(b.scheduledTime).getTime();
-                  }
-                  if (a.scheduledTime && !b.scheduledTime) return -1;
-                  if (!a.scheduledTime && b.scheduledTime) return 1;
-                  return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
-                })
-                .map(task => (
-                <div
-                  key={task.id}
-                  className={`bg-white rounded-2xl p-5 border transition-all duration-200 relative shadow-sm hover:shadow-md ${
-                    task.completed 
-                      ? 'border-green-200 bg-green-50' 
-                      : task.status === 'active'
-                      ? 'border-blue-200 bg-blue-50 shadow-md'
-                      : 'border-gray-100 hover:border-gray-200'
-                  }`}
-                >
-                  <div className="flex items-start space-x-4">
-                    <button
-                      onClick={() => onToggleTask(task.id)}
-                      className="mt-1 transition-transform duration-200 hover:scale-110"
-                    >
-                      {task.completed ? (
-                        <CheckCircle2 size={22} className="text-green-600" />
-                      ) : (
-                        <Circle size={22} className="text-gray-400 hover:text-gray-600" />
-                      )}
-                    </button>
-                    <div className="flex-1 min-w-0">
-                      <h3 className={`font-semibold text-lg leading-tight ${
-                        task.completed ? 'text-green-800 line-through' : 'text-gray-900'
-                      }`}>
-                        {task.title}
-                      </h3>
-                      <div className="flex items-center mt-2 space-x-4">
-                        {task.scheduledTime ? (
-                          <span className="text-sm font-medium text-gray-700 bg-gray-100 px-2 py-1 rounded-lg">
-                            {formatTime(task.scheduledTime)}
-                          </span>
-                        ) : (
-                          <span className="text-sm font-medium text-purple-700 bg-purple-100 px-2 py-1 rounded-lg">
-                            Flexible
-                          </span>
-                        )}
-                        <span className="text-sm text-gray-600 bg-gray-100 px-2 py-1 rounded-lg">
-                          {task.duration} min
-                        </span>
-                        <div className="flex items-center">
-                          {task.isTimedTask ? (
-                            <Timer size={14} className="text-gray-500" />
-                          ) : (
-                            <Waves size={14} className="text-purple-500" />
-                          )}
-                        </div>
-                      </div>
-                      {!task.completed && (
-                        <div className="mt-3 flex items-center space-x-2">
-                          {task.status !== 'active' ? (
-                            <button
-                              onClick={() => onUpdateTaskStatus(task.id, 'active')}
-                              className="flex items-center space-x-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors duration-200"
-                            >
-                              <Play size={14} />
-                              <span>Start Task</span>
-                            </button>
-                          ) : (
-                            <button
-                              onClick={() => onUpdateTaskStatus(task.id, 'not-started')}
-                              className="flex items-center space-x-1 px-3 py-1.5 bg-gray-600 hover:bg-gray-700 text-white rounded-lg text-sm font-medium transition-colors duration-200"
-                            >
-                              <Pause size={14} />
-                              <span>Pause Task</span>
-                            </button>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                    <div className="relative">
-                      <button
-                        onClick={() => setActiveTaskMenu(activeTaskMenu === task.id ? null : task.id)}
-                        className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-                      >
-                        <MoreHorizontal size={18} />
-                      </button>
-                      {activeTaskMenu === task.id && (
-                        <div className="absolute right-0 top-10 bg-white border border-gray-200 rounded-xl shadow-lg py-2 z-10 min-w-[140px]">
-                          {task.scheduledTime && (
-                            <button
-                              onClick={() => handleTaskAction(task.id, 'reschedule')}
-                              className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200"
-                            >
-                              <RotateCcw size={16} />
-                              <span>Reschedule</span>
-                            </button>
-                          )}
-                          <button
-                            onClick={() => handleTaskAction(task.id, 'delete')}
-                            className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200"
-                          >
-                            <Trash2 size={16} />
-                            <span>Delete</span>
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <button
+                    type="submit"
+                    disabled={!taskInput.trim()}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 p-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:shadow-beautiful disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                  >
+                    <Plus size={18} />
+                  </button>
                 </div>
-              ))}
+                
+                <div className="flex items-center space-x-4">
+                  <label className="flex items-center space-x-3 cursor-pointer group">
+                    <input
+                      type="checkbox"
+                      checked={isTimedTask}
+                      onChange={(e) => setIsTimedTask(e.target.checked)}
+                      className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 transition-colors duration-200"
+                    />
+                    <div className="flex items-center space-x-2">
+                      <Timer size={18} className="text-blue-600 group-hover:text-blue-700 transition-colors duration-200" />
+                      <span className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors duration-200">
+                        Make this a timed task
+                      </span>
+                    </div>
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          {/* Beautiful Active Task Widget */}
+          {currentActiveTask && (
+            <div className="mb-8 animate-scale-in">
+              <div className="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl p-6 text-white shadow-beautiful-lg">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-3 h-3 bg-white rounded-full animate-pulse-soft"></div>
+                    <h3 className="font-bold text-lg">Currently Active</h3>
+                  </div>
+                  <Timer size={20} className="text-white/80" />
+                </div>
+                <p className="text-white font-semibold text-xl mb-3">{currentActiveTask.title}</p>
+                <div className="flex items-center justify-between">
+                  <div className="text-white/90 text-sm">
+                    <span className="font-medium">{currentActiveTask.duration} minutes</span>
+                    {currentActiveTask.scheduledTime && (
+                      <span> • Started at {formatTime(currentActiveTask.scheduledTime)}</span>
+                    )}
+                  </div>
+                  <button
+                    onClick={() => onUpdateTaskStatus(currentActiveTask.id, 'not-started')}
+                    className="flex items-center space-x-2 px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl font-medium transition-all duration-300 backdrop-blur-sm"
+                  >
+                    <Pause size={16} />
+                    <span>Pause</span>
+                  </button>
+                </div>
+              </div>
             </div>
           )}
+
+          {/* Beautiful Flexible Tasks Summary */}
+          {flexibleTasks.length > 0 && (
+            <div className="mb-8 animate-slide-up">
+              <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl p-6 text-white shadow-beautiful-lg">
+                <div className="flex items-center space-x-3 mb-3">
+                  <Waves size={20} className="text-white" />
+                  <h3 className="font-bold text-lg">Flexible Tasks</h3>
+                </div>
+                <p className="text-white font-semibold text-xl">
+                  {flexibleTasks.length} flexible task{flexibleTasks.length !== 1 ? 's' : ''} remaining
+                </p>
+                <p className="text-white/90 text-sm mt-2">
+                  Complete these at your own pace throughout the day
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Beautiful Today's Plan */}
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center space-x-2">
+              <span>Today's Plan</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent ml-4"></div>
+            </h2>
+
+            {todayTasks.length === 0 ? (
+              <div className="card-beautiful p-12 text-center animate-fade-in">
+                <div className="empty-state-icon">
+                  <Clock size={64} className="text-gray-300 mx-auto animate-float" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  Nothing planned yet for today
+                </h3>
+                <p className="text-gray-600">
+                  Add your first task above to get started with your productive day
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {todayTasks
+                  .sort((a, b) => {
+                    if (a.scheduledTime && b.scheduledTime) {
+                      return new Date(a.scheduledTime).getTime() - new Date(b.scheduledTime).getTime();
+                    }
+                    if (a.scheduledTime && !b.scheduledTime) return -1;
+                    if (!a.scheduledTime && b.scheduledTime) return 1;
+                    return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+                  })
+                  .map((task, index) => (
+                  <div
+                    key={task.id}
+                    className={`card-beautiful p-6 transition-all duration-300 relative animate-slide-up ${
+                      task.completed 
+                        ? 'bg-gradient-green-soft border-green-200' 
+                        : task.status === 'active'
+                        ? 'bg-gradient-blue-soft border-blue-200 shadow-beautiful-lg'
+                        : 'hover:shadow-beautiful-hover'
+                    }`}
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="flex items-start space-x-4">
+                      <button
+                        onClick={() => onToggleTask(task.id)}
+                        className="mt-1 transition-all duration-300 hover:scale-110"
+                      >
+                        {task.completed ? (
+                          <CheckCircle2 size={24} className="text-green-600" />
+                        ) : (
+                          <Circle size={24} className="text-gray-400 hover:text-gray-600" />
+                        )}
+                      </button>
+                      <div className="flex-1 min-w-0">
+                        <h3 className={`font-bold text-lg leading-tight mb-3 ${
+                          task.completed ? 'task-completed' : 'text-gray-900'
+                        }`}>
+                          {task.title}
+                        </h3>
+                        <div className="flex items-center flex-wrap gap-3 mb-4">
+                          {task.scheduledTime ? (
+                            <span className="time-display text-gray-800">
+                              {formatTime(task.scheduledTime)}
+                            </span>
+                          ) : (
+                            <span className="task-type-flexible">
+                              Flexible
+                            </span>
+                          )}
+                          <span className="time-display text-gray-600">
+                            {task.duration} min
+                          </span>
+                          <div className="flex items-center">
+                            {task.isTimedTask ? (
+                              <Timer size={16} className="text-blue-500" />
+                            ) : (
+                              <Waves size={16} className="text-purple-500" />
+                            )}
+                          </div>
+                          {task.status === 'active' && (
+                            <div className="status-active flex items-center space-x-2 text-blue-600 font-semibold text-sm">
+                              <span>Active</span>
+                            </div>
+                          )}
+                        </div>
+                        {!task.completed && (
+                          <div className="flex items-center space-x-3">
+                            {task.status !== 'active' ? (
+                              <button
+                                onClick={() => onUpdateTaskStatus(task.id, 'active')}
+                                className="btn-primary flex items-center space-x-2"
+                              >
+                                <Play size={16} />
+                                <span>Start Task</span>
+                              </button>
+                            ) : (
+                              <button
+                                onClick={() => onUpdateTaskStatus(task.id, 'not-started')}
+                                className="btn-secondary flex items-center space-x-2"
+                              >
+                                <Pause size={16} />
+                                <span>Pause Task</span>
+                              </button>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                      <div className="relative">
+                        <button
+                          onClick={() => setActiveTaskMenu(activeTaskMenu === task.id ? null : task.id)}
+                          className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition-all duration-200"
+                        >
+                          <MoreHorizontal size={20} />
+                        </button>
+                        {activeTaskMenu === task.id && (
+                          <div className="absolute right-0 top-12 bg-white border border-gray-200 rounded-2xl shadow-beautiful-lg py-2 z-10 min-w-[160px] animate-scale-in">
+                            {task.scheduledTime && (
+                              <button
+                                onClick={() => handleTaskAction(task.id, 'reschedule')}
+                                className="flex items-center space-x-3 w-full px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200"
+                              >
+                                <RotateCcw size={16} />
+                                <span>Reschedule</span>
+                              </button>
+                            )}
+                            <button
+                              onClick={() => handleTaskAction(task.id, 'delete')}
+                              className="flex items-center space-x-3 w-full px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200"
+                            >
+                              <Trash2 size={16} />
+                              <span>Delete</span>
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

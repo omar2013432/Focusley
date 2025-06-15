@@ -121,7 +121,7 @@ function App() {
       scheduledTime,
       completed: false,
       isTimedTask,
-      priority: 'medium', // Could be inferred from keywords in the future
+      priority: 'medium',
       status: 'not-started',
       createdAt: new Date().toISOString()
     };
@@ -215,32 +215,32 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Main Content */}
-      <div className="pb-20">
+      <div className="pb-24">
         {renderContent()}
       </div>
 
-      {/* Enhanced Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-200 px-4 py-3 safe-area-pb shadow-lg">
+      {/* Beautiful Bottom Navigation */}
+      <nav className="nav-beautiful px-6 py-4 safe-area-pb">
         <div className="flex justify-around items-center max-w-md mx-auto">
           {[
-            { id: 'dashboard', icon: Home, label: 'Today' },
-            { id: 'schedule', icon: Calendar, label: 'Schedule' },
-            { id: 'streaks', icon: Flame, label: 'Progress' },
-            { id: 'settings', icon: Settings, label: 'Settings' }
-          ].map(({ id, icon: Icon, label }) => (
+            { id: 'dashboard', icon: Home, label: 'Today', gradient: 'from-blue-500 to-blue-600' },
+            { id: 'schedule', icon: Calendar, label: 'Schedule', gradient: 'from-purple-500 to-purple-600' },
+            { id: 'streaks', icon: Flame, label: 'Progress', gradient: 'from-orange-500 to-red-500' },
+            { id: 'settings', icon: Settings, label: 'Settings', gradient: 'from-gray-500 to-gray-600' }
+          ].map(({ id, icon: Icon, label, gradient }) => (
             <button
               key={id}
               onClick={() => setActiveTab(id)}
-              className={`flex flex-col items-center py-2 px-4 rounded-xl transition-all duration-200 ${
+              className={`flex flex-col items-center py-3 px-5 rounded-2xl transition-all duration-300 ${
                 activeTab === id
-                  ? 'text-blue-600 bg-blue-50 shadow-sm scale-105'
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  ? `bg-gradient-to-r ${gradient} text-white shadow-beautiful-lg transform scale-110`
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 hover:shadow-beautiful'
               }`}
             >
-              <Icon size={22} className={activeTab === id ? 'mb-1' : 'mb-1'} />
-              <span className={`text-xs font-medium ${activeTab === id ? 'font-semibold' : ''}`}>
+              <Icon size={24} className={`mb-1 ${activeTab === id ? 'animate-bounce-gentle' : ''}`} />
+              <span className={`text-xs font-semibold ${activeTab === id ? 'font-bold' : ''}`}>
                 {label}
               </span>
             </button>
