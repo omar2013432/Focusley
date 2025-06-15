@@ -142,7 +142,7 @@ const Dashboard: React.FC<DashboardProps> = ({
 
           {/* Beautiful Task Input */}
           <div className="mb-8 animate-slide-up">
-            <div className="card-beautiful p-8">
+            <div className="card-beautiful rounded-xl shadow-md hover:shadow-lg transition-all p-6 sm:p-8">
               <div className="flex items-center space-x-3 mb-6">
                 <div className="p-2 bg-gradient-to-r from-[#ff7e5f] to-[#feb47b] rounded-full">
                   <Plus size={20} className="text-white" />
@@ -153,20 +153,20 @@ const Dashboard: React.FC<DashboardProps> = ({
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-3">
                   <label className="flex items-center space-x-3 cursor-pointer group">
                     <input
                       type="checkbox"
                       checked={isTimedTask}
                       onChange={(e) => setIsTimedTask(e.target.checked)}
-                      className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 transition-colors duration-200"
+                      className="w-5 h-5 rounded border-gray-300 text-orange-500 focus:ring-orange-500 focus:outline-none transition-colors duration-200"
                     />
                     <div className="flex items-center space-x-2">
-                      <Timer size={18} className="text-blue-600 group-hover:text-blue-700 transition-colors duration-200" />
+                      <Timer size={18} className="text-orange-500 group-hover:text-orange-600 transition-colors duration-200" />
                       <span className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors duration-200">
                         Make this a timed task
                       </span>
-                      <Info size={16} className="text-gray-500" title="Timed tasks are scheduled automatically. Uncheck to keep flexible." />
+                      <Info size={16} className="text-gray-500" title="Timed tasks will be scheduled automatically in your daily focus window" />
                     </div>
                   </label>
                 </div>
@@ -176,20 +176,22 @@ const Dashboard: React.FC<DashboardProps> = ({
                     type="text"
                     value={taskInput}
                     onChange={(e) => setTaskInput(e.target.value)}
-                    placeholder="Finish Homework..."
-                    className="input-beautiful text-base pr-16 h-12 placeholder-gray-600"
+                    placeholder="e.g. Finish homework (45)"
+                    className="input-beautiful text-base pr-16 h-12 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
                     autoFocus
                   />
                   <button
-                    type="submit"
+                    type="button"
+                    aria-label="Add Task"
+                    onClick={handleSubmit}
                     disabled={!taskInput.trim()}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 transform p-2 h-10 bg-gradient-to-r from-[#ff7e5f] to-[#feb47b] text-white rounded-lg hover:shadow-beautiful disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 transform p-2 h-10 bg-orange-500 text-white rounded-lg hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                   >
                     <Plus size={20} />
                   </button>
                 </div>
-                <p className="text-xs text-gray-500">Press Enter to add</p>
-                <p className="text-xs text-gray-500">Tip: include the number of minutes in parentheses</p>
+                <p className="text-sm text-gray-500">Press Enter to add</p>
+                <p className="text-sm text-gray-500">Tip: include the number of minutes in parentheses</p>
               </form>
             </div>
           </div>
@@ -276,9 +278,9 @@ const Dashboard: React.FC<DashboardProps> = ({
                   .map((task, index) => (
                   <div
                     key={task.id}
-                    className={`card-beautiful p-6 transition-all duration-300 relative animate-slide-up ${
-                      task.completed 
-                        ? 'bg-gradient-purple-soft border-purple-200'
+                    className={`card-beautiful p-6 transition-all duration-300 relative animate-slide-up animate-scale-in ${
+                      task.completed
+                        ? 'bg-gradient-orange-soft border-orange-200'
                         : task.status === 'active'
                         ? 'bg-gradient-blue-soft border-blue-200 shadow-beautiful-lg'
                         : 'hover:shadow-beautiful-hover'
@@ -290,9 +292,9 @@ const Dashboard: React.FC<DashboardProps> = ({
                         onClick={() => onToggleTask(task.id)}
                         className="mt-1 transition-all duration-300 hover:scale-110"
                       >
-                        {task.completed ? (
-                          <CheckCircle2 size={24} className="text-purple-600" />
-                        ) : (
+                          {task.completed ? (
+                            <CheckCircle2 size={24} className="text-orange-600" />
+                          ) : (
                           <Circle size={24} className="text-gray-400 hover:text-gray-600" />
                         )}
                       </button>
@@ -319,7 +321,7 @@ const Dashboard: React.FC<DashboardProps> = ({
                             {task.isTimedTask ? (
                               <Timer size={16} className="text-blue-500" />
                             ) : (
-                              <Waves size={16} className="text-purple-500" />
+                              <Waves size={16} className="text-orange-500" />
                             )}
                           </div>
                           {task.status === 'active' && (
