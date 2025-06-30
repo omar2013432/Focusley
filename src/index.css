@@ -33,11 +33,11 @@
   }
 
   .gradient-secondary {
-    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
   }
 
   .gradient-success {
-    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
   }
   
   .gradient-warning {
@@ -49,7 +49,7 @@
   }
   
   .gradient-blue-soft {
-    background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   }
   
   .gradient-orange-soft {
@@ -184,7 +184,7 @@ select:focus,
 textarea:focus,
 button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Enhanced button hover effects */
@@ -224,16 +224,15 @@ button:active:not(:disabled) {
   background-clip: text;
 }
 
-
 .text-gradient-secondary {
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-success {
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -279,7 +278,7 @@ button:active:not(:disabled) {
 }
 
 .btn-success {
-  @apply bg-gradient-to-r from-[#8b5cf6] to-[#7c3aed];
+  @apply bg-gradient-to-r from-[#1a1a1a] to-[#000000];
   @apply text-white font-semibold px-6 py-3 rounded-lg;
   @apply min-h-[44px];
   @apply shadow-beautiful hover:shadow-beautiful-hover;
@@ -294,7 +293,7 @@ button:active:not(:disabled) {
 
 .progress-fill {
   @apply h-full rounded-full transition-all duration-500 ease-out;
-  @apply bg-gradient-to-r from-[#ff7e5f] to-[#feb47b];
+  @apply bg-gradient-to-r from-[#1a1a1a] to-[#000000];
 }
 
 /* Enhanced status indicators */
@@ -333,13 +332,13 @@ button:active:not(:disabled) {
 /* Enhanced loading states */
 .loading-beautiful {
   @apply inline-block w-4 h-4 border-2 border-gray-300;
-  @apply border-t-blue-600 rounded-full;
+  @apply border-t-black rounded-full;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
   to {
-    transform: rotate(360deg);
+    transform: rotate(360px);
   }
 }
 
@@ -358,7 +357,7 @@ button:active:not(:disabled) {
 /* Enhanced achievement badges */
 .achievement-badge {
   @apply inline-flex items-center px-3 py-1;
-  @apply bg-gradient-to-r from-yellow-400 to-orange-500;
+  @apply bg-gradient-to-r from-gray-800 to-black;
   @apply text-white text-sm font-semibold rounded-full;
   @apply shadow-beautiful;
   @apply animate-bounce-gentle;
@@ -373,7 +372,7 @@ button:active:not(:disabled) {
 /* Enhanced task type indicators */
 .task-type-timed {
   @apply inline-flex items-center px-2 py-1;
-  @apply bg-blue-100 text-blue-700 text-xs font-medium rounded-lg;
+  @apply bg-gray-100 text-gray-700 text-xs font-medium rounded-lg;
 }
 
 .task-type-flexible {
@@ -384,7 +383,7 @@ button:active:not(:disabled) {
 /* Enhanced completion states */
 .task-completed {
   @apply opacity-75 line-through;
-  @apply text-purple-600;
+  @apply text-gray-600;
 }
 
 /* Enhanced priority indicators */
@@ -397,7 +396,7 @@ button:active:not(:disabled) {
 }
 
 .priority-low {
-  @apply border-l-4 border-purple-500;
+  @apply border-l-4 border-gray-500;
 }
 
 /* Enhanced time displays */
@@ -425,7 +424,7 @@ button:active:not(:disabled) {
 .toggle-switch {
   @apply relative inline-flex h-6 w-11 items-center rounded-full;
   @apply transition-colors duration-300 ease-in-out;
-  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  @apply focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2;
 }
 
 .toggle-switch-thumb {
@@ -470,7 +469,7 @@ button:active:not(:disabled) {
 
 /* Enhanced notification styles */
 .notification-success {
-  @apply bg-purple-50 border border-purple-200 text-purple-800;
+  @apply bg-gray-50 border border-gray-200 text-gray-800;
   @apply px-4 py-3 rounded-lg;
   @apply shadow-beautiful;
 }
